@@ -1,15 +1,46 @@
 {% extends 'awwards/base.html'%}
 
-{% block title%}My Profile{% endblock%}
+{% block title%}Profile{% endblock%}
 {% block content%}
 
-<!-- CONTENT -->
+<!-- MODAL -->
+<div class="ui modal mymodal">
+  <i class="close icon"></i>
+  <div class="header">
+      Update Your Profile
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img class="ui medium circular image" src="{{profile.avatar.url}}">
+    </div>
+    <div class="description">
+      <div class="ui header">Provide some aditional info about you.</div>
+      <form class="ui form" action="" enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="ui positive  button">Update</button>
+      </form>
+  </div>
 
+</div>
+</div>
+
+<!-- CONTENT -->
 
 <div class="ui grid">
 <div class="row">
 <div class="eight wide  column">
 <div class="ui raised segment">
+  
+  {% if comfirm %}
+  <div class="ui green message">
+      <i class="close icon"></i>
+      <div class="header">
+        Updated.
+      </div>
+    </div>
+    {% endif %}
+
   <h3>My Profile:</h3>
   <div class="ui grid">
   <div class="row">
