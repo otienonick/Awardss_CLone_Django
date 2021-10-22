@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Profile
+from . models import Profile,Post
 from .forms  import ProfileModelForm
 
 
@@ -23,7 +23,11 @@ def my_profile_view(request):
     return render(request,'profiles/myprofile.html',context)
 
 def home(request):
-
+    posts = Post.objects.all()
+    profile = Profile.objects.get(user =request.user)
     context = {
-    }    
+        'posts':posts,
+        'profile':profile,
+    }
+
     return render(request,'awwards/home.html',context)
