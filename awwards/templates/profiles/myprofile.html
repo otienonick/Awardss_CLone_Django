@@ -1,7 +1,63 @@
-{% extends 'awwards/base.html'%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../../../static/js/script.js"></script>
+    <!--Custom css ADD HERE-->
+    
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+  
+    <link rel="stylesheet" href="../../../static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+   
+  
+  </head>
+  <body>
+    
+  <div class="ui grid  inverted menu nav mb-7">
+    <div class="ui container">
+      <a href="{% url 'home' %}" class="item">
+          <h3>Awardzz</h3>
+      </a>
+  
+      <div class="right menu">
+          {% if request.user.is_authenticated %}
+               <div class="item">
+                <form action="" method="GET">
+                  <div class="ui action left icon input">
+                  <input class="prompt" type="text" name='q' placeholder="project name...">
+                  <i class="search icon"></i>
+                  <button type='submit' class="ui button">Search</button>
+                  </div>
+              </form>
+              </div>
+          
+              <a href="{% url 'profile' %}" class="item">
+                   {{ request.user }}<i class="user icon"></i>
+              </a>
+  
+              <a href="" class="ui item">
+                  Logout
+              </a>
+          {% else %}
+          <a href="" class="ui item">
+                  Login
+              </a>
+          {% endif %}
+      </div>
+    </div>
+  </div>
 
-{% block title%}Profile{% endblock%}
-{% block content%}
+
+
+  <!-- NEW NAVBAR -->
+
 
 <!-- MODAL -->
 <div class="ui modal mymodal">
@@ -26,6 +82,7 @@
 </div>
 
 <!-- CONTENT -->
+<div class="ui container">
 
 <div class="ui grid">
 <div class="row">
@@ -73,8 +130,25 @@
 </div>
 </div>
 
+<div class="eight wide  column">
+  <h3>Create a post {{profile.username}}</h3>
+
+  <form action="" method="POST" class="ui form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{p_form.as_p}}
+    <div class="ui ">
+       <button type="submit" class="ui button positive">Post</button>
+
+    </div>
+
+</form>
+
+  </div>
+
 </div>
 </div>
+
+
 
 <div class="ui center aligned basic segment">
   
@@ -84,8 +158,8 @@
       </div>
 
         {% if not posts %}
-         <div class="ui raised segment">
-          No Photos
+         <div class="ui raised center aligned  segment">
+          No Photos yet
          </div>
         {% else%}
         
@@ -109,4 +183,6 @@
         {% endif %}
         
         </div>
-{% endblock%}
+        </body>
+        </html>
+        

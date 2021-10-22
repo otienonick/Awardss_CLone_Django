@@ -1,3 +1,4 @@
+// SHOW MODAL
 $(document).ready(function(){
     $('#modal-btn').click(function(){
         $('.ui.modal')
@@ -6,7 +7,7 @@ $(document).ready(function(){
 
 });
 
-
+// REMOVE MESSAGE
 $('.message .close')
   .on('click', function() {
     $(this)

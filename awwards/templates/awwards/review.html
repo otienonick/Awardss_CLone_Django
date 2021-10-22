@@ -1,0 +1,22 @@
+{%extends 'awwards/base.html'%}
+{% block content %}
+{{block.super}}
+<div class="container d-flex justify-content-center">
+    <div class="row reduce__card pt-5">
+        <div class="col ui piled raised segment ">
+            <div class="my-3">
+                <img src="{{post.image.url}}" class="img-fluid mb-3" alt="simps">
+                <h6><span class="upper"> {{post.project_name}}</span></h6>
+                <div class="linked float-end">
+                    <a href="{{post.url}}"  data-inverted="" data-tooltip="Visit live link"  target="_blank"><i class="linkify large  icon "></i></a>
+
+                </div>
+
+                <p class="my-3">{{post.description}}</p>
+            </div>
+    
+
+        </div>
+    </div>
+</div>
+{%endblock%}

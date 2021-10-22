@@ -1,5 +1,6 @@
 {% extends 'awwards/base.html'%}
 
+
 {% block title%}HOME{% endblock%}
 {% block content%}
 
@@ -19,21 +20,21 @@
                     <div class="image mt-3">
                         <img class="ui image image__img" src="{{post.image.url}}" alt="img">
                         <div class="image__overlay image__overlay--blur">
-                            <button type="submit" class="ui inverted  button">Review</button>
+                          <a href="{% url 'review' post.id %}"> <button class="ui inverted  button">Review</button></a>
                          <div class="image__relay">
                             <a href="{{post.url}}" data-inverted="" data-tooltip="Visit live link"  target="_blank"> <i class="share icon large"></i></a>
-
-
                          </div> 
                         </div>
 
                     </div>
                     
                     <div class="card-body">
+                        <h6><span class="upper"> {{post.project_name}}</span></h6><br>
+
               
-                        <p class="float-end">{{post.created |date:"M d, Y"}}</p><br>
+                        <p class="float-end">{{post.created |date:"M d, Y"}}</p>
                         <p>From <span class="upper"> {{post.location}}</span></p><hr>
-                        <p>{{post.author}}</p>
+                        <p>By:<span class="upper fs-5"> {{post.author}}</span></p>
                     </div>
                   </div>
             </div>
