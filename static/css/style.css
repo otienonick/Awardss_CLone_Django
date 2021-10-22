@@ -1,0 +1,21 @@
+body{
+    background-color: #f8f8f8 !important;
+}
+
+.nav{
+    border-radius: 0 !important;
+    
+}
+
+.mb-7{
+    margin-bottom: 7px !important;
+}
+
+.mt-5{
+    margin-top: 5px !important;
+}
+.mymodal{
+    height: 570px !important;
+    top: 100px !important;
+    font-size: 20px !important;
+}
