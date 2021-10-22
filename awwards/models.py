@@ -8,3 +8,6 @@ class Profile(models.Model):
     bio = models.TextField(default='no bio...',max_length=300)
     avatar = models.ImageField(default='avatar.png',upload_to = 'avatars/')
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.username}-{self.created}'

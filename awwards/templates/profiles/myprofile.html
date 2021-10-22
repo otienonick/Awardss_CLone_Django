@@ -10,15 +10,6 @@
 <div class="row">
 <div class="eight wide  column">
 <div class="ui raised segment">
-  {% if comfirm %}
-<div class="ui green message">
-    <i class="close icon"></i>
-    <div class="header">
-      Updated.
-    </div>
-  </div>
-  {% endif %}
-
   <h3>My Profile:</h3>
   <div class="ui grid">
   <div class="row">
@@ -40,12 +31,7 @@
             <td>Bio:</td>
             <td>{{profile.bio}}</td>
 
-          </tr>
-          <tr>
-            <td>Number of Posts:</td>
-            <td>{{profile.get_posts_no}}</td>
-          </tr>
-         
+          </tr>         
         </tbody>
       </table>
       </div>

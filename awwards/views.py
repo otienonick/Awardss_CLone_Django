@@ -8,6 +8,11 @@ def my_profile_view(request):
     context = {
         'profile':profile,
       
-
     }
     return render(request,'profiles/myprofile.html',context)
+
+def home(request):
+
+    context = {
+    }    
+    return render(request,'awwards/home.html',context)
