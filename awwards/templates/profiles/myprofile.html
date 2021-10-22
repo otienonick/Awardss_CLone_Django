@@ -31,7 +31,7 @@
 <div class="row">
 <div class="eight wide  column">
 <div class="ui raised segment">
-  
+
   {% if comfirm %}
   <div class="ui green message">
       <i class="close icon"></i>
@@ -62,7 +62,7 @@
             <td>Bio:</td>
             <td>{{profile.bio}}</td>
 
-          </tr>         
+          </tr>      
         </tbody>
       </table>
       </div>
@@ -75,4 +75,38 @@
 
 </div>
 </div>
+
+<div class="ui center aligned basic segment">
+  
+  <div class="ui horizontal divider">
+    POSTS
+      </div>
+      </div>
+
+        {% if not posts %}
+         <div class="ui raised segment">
+          No Photos
+         </div>
+        {% else%}
+        
+      
+        <div class="ui equal width grid">
+          {% for post in posts %}
+          <div class="five wide column">
+  
+          <div class="ui raised segment">
+              <div class="image">
+                  <img class="ui image image__img" src="{{post.image.url}}" alt="">
+              </div>
+           
+              </div>
+          </div>
+  
+            {% endfor%}
+  
+          </div>
+
+        {% endif %}
+        
+        </div>
 {% endblock%}

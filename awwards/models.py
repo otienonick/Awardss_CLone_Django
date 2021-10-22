@@ -10,13 +10,6 @@ class Profile(models.Model):
     avatar = models.ImageField(default='avatar.png',upload_to = 'avatars/')
     created = models.DateTimeField(auto_now_add=True)
 
-    # number of posts
-    def get_posts_no(self):
-        return self.posts.all().count()
-
-    def get_all_author_posts(self):
-        return self.posts.all()   
-
     def __str__(self):
         return f'{self.user.username}-{self.created}'
 
