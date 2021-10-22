@@ -1,0 +1,61 @@
+{% extends 'awwards/base.html'%}
+
+{% block title%}My Profile{% endblock%}
+{% block content%}
+
+<!-- CONTENT -->
+
+
+<div class="ui grid">
+<div class="row">
+<div class="eight wide  column">
+<div class="ui raised segment">
+  {% if comfirm %}
+<div class="ui green message">
+    <i class="close icon"></i>
+    <div class="header">
+      Updated.
+    </div>
+  </div>
+  {% endif %}
+
+  <h3>My Profile:</h3>
+  <div class="ui grid">
+  <div class="row">
+    <div class="six wide column">
+      <img class="ui small rounded image" src="{{profile.avatar.url}}"  alt="">
+      <div class="mt-5">
+        <button class="ui inverted  green button" id="modal-btn">Update your profile</button>
+      </div>
+
+    </div>
+    <div class="ten wide column">
+      <table class="ui table">
+        <tbody>
+          <tr>
+            <td>username:</td>
+            <td>{{profile.username}}</td>
+          </tr>
+          <tr>
+            <td>Bio:</td>
+            <td>{{profile.bio}}</td>
+
+          </tr>
+          <tr>
+            <td>Number of Posts:</td>
+            <td>{{profile.get_posts_no}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+      </div>
+
+  </div>
+  </div>
+
+</div>
+</div>
+
+</div>
+</div>
+{% endblock%}
