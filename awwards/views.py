@@ -6,18 +6,19 @@ from .forms  import ProfileModelForm
 # Create your views here.
 def my_profile_view(request):
     profile = Profile.objects.get(user = request.user)
+    posts = Post.objects.filter(author=request.user).order_by('-created')
     form = ProfileModelForm(request.POST or None ,request.FILES or None,instance = profile)
     comfirm = False
     if request.method == 'POST':
         if form.is_valid():
             form.save()
             comfirm = True
-        form = ProfileModelForm()   
          
     context = {
         'profile':profile,
         'form':form,
         'comfirm':comfirm,
+        'posts':posts
 
     }
     return render(request,'profiles/myprofile.html',context)
