@@ -14,6 +14,35 @@
 
                 <p class="my-3">{{post.description}}</p>
             </div>
+            <div class="content">
+                <form action="{% url 'like' %}" id="like_form" method="post">
+                    {% csrf_token%}
+                    <input type="hidden"  name="post_id" value="{{post.id}}">
+                    <button type="submit" class="mini ui inverted button">
+                        {% if  not post.liked.all %}
+                        <div class="mini ui labeled button" tabindex="0">
+                            <div class="mini ui blue button">
+                              <i class="heart icon"></i> Like
+                            </div>
+                            <a class=" mini ui basic blue left pointing label">
+                                {{post.get_likes}}
+                            </a>
+                          </div>
+                        {% else %}
+                        <div class="mini ui labeled button" tabindex="0">
+                            <div class="mini ui red button">
+                              <i class="heart icon"></i> Unlike
+                            </div>
+                            <a class="mini ui basic red left pointing label">
+                                {{post.get_likes}}
+                            </a>
+                          </div>
+                        {% endif%}
+                    </button>
+
+                </form>
+
+            </div>
     
 
         </div>
