@@ -29,6 +29,20 @@ class Post(models.Model):
 
     def __str__(self):
         return str(self.description[:20])
+
+    def save_project(self):
+        self.save() 
+
+    def delete_project(self):
+        self.delete()  
+
+    def  update_project(self):
+        self.save()  
+
+    @classmethod
+    def get_project_by_id(cls,id=None):
+        photos = cls.objects.filter(id = id)   
+        return photos     
         
     @classmethod
     def search_by_project_name(cls,search_term):
