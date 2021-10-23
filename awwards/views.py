@@ -1,9 +1,13 @@
 from django.shortcuts import redirect, render
 from . models import Profile,Post,Like
 from .forms  import ProfileModelForm,PostModelForm
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
+# @login_required(login_url='/accounts/login/')
+
 def my_profile_view(request):
     profile = Profile.objects.get(user = request.user)
     posts = Post.objects.filter(author=request.user).order_by('-created')
@@ -37,14 +41,15 @@ def my_profile_view(request):
 
 def home(request):
     posts = Post.objects.all()
-    profile = Profile.objects.get(user =request.user)
+    # profile = Profile.objects.get(user =request.user)
     context = {
         'posts':posts,
-        'profile':profile,
+        # 'profile':profile,
     }
 
     return render(request,'awwards/home.html',context)
-
+    
+@login_required(login_url='/accounts/login/')
 def reviewPhoto(request,pk):
     post = Post.objects.get(id = pk)
     context = {
@@ -54,7 +59,7 @@ def reviewPhoto(request,pk):
 
 
     return render(request,'awwards/review.html',context)
-
+    
 def like(request):
     user = request.user
     if request.method == 'POST':
