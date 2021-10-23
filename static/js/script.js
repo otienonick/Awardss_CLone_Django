@@ -13,4 +13,6 @@ $('.message .close')
     $(this)
       .closest('.message')
       .transition('fade')
-  });
+    ;
+  })
+;

@@ -5,7 +5,7 @@
       </a>
   
       <div class="right menu">
-          {% if request.user.is_authenticated %}
+          {% if user.is_authenticated %}
                <div class="item">
                 <form action="" method="GET">
                   <div class="ui action left icon input">
@@ -20,19 +20,15 @@
                    {{ request.user }}<i class="user icon"></i>
               </a>
   
-              <a href="" class="ui item">
+              <a href="/logout" class="ui item">
                   Logout
               </a>
           {% else %}
-          <a href="" class="ui item">
+          <a href="/accounts/login" class="ui item">
                   Login
               </a>
           {% endif %}
       </div>
     </div>
   </div>
-
-
-
-  <!-- NEW NAVBAR -->
 
