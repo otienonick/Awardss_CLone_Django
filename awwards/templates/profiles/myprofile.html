@@ -27,18 +27,10 @@
   
       <div class="right menu">
           {% if user.is_authenticated %}
-               <div class="item">
-                <form action="" method="GET">
-                  <div class="ui action left icon input">
-                  <input class="prompt" type="text" name='q' placeholder="project name...">
-                  <i class="search icon"></i>
-                  <button type='submit' class="ui button">Search</button>
-                  </div>
-              </form>
-              </div>
+   
           
               <a href="{% url 'profile' %}" class="item">
-                   {{ profile.username }}<i class="user icon"></i>
+                   {{ profile.user }}<i class="user icon"></i>
               </a>
   
               <a href="/logout" class="ui item">
@@ -69,7 +61,7 @@
       <img class="ui medium circular image" src="{{profile.avatar.url}}">
     </div>
     <div class="description">
-      <div class="ui header">Provide some aditional info about you.</div>
+      <div class="ui header">Provide some additional info about you.</div>
       <form class="ui form" action="" enctype="multipart/form-data" method="POST">
           {% csrf_token %}
           {{form.as_p}}
@@ -159,7 +151,7 @@
 
         {% if not posts %}
          <div class="ui raised center aligned  segment">
-          No Photos yet
+          No Projects yet
          </div>
         {% else%}
         

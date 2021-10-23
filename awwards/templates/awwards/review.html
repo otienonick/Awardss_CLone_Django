@@ -1,7 +1,7 @@
 {%extends 'awwards/base.html'%}
 {% block content %}
 {{block.super}}
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center" style="margin-top: 100px;">
     <div class="row reduce__card pt-5">
         <div class="col ui piled raised segment ">
             <div class="my-3">
@@ -15,12 +15,18 @@
                 <p class="my-3">{{post.description}}</p>
             </div>
             <div class="content">
+                {% if request.user == post.author %}            
+
                 <div class="float-end">
 
                     <a style="text-decoration: none; color: red;" href="{% url 'deletepost' post.id %}"><i class="trash alternate large icon"></i></a>
-                    <a href="{% url 'updatepost' post.id %}"> <i class="edit large icon"></i> </a>
+                    <a  style="text-decoration: none; color: black;"  href="{% url 'updatepost' post.id %}"> <i class="edit large icon"></i> </a>
 
                     </div>
+                    {% else %}
+                    {% endif %}
+
+
                 <form action="{% url 'like' %}" id="like_form" method="post">
                     {% csrf_token%}
                     <input type="hidden"  name="post_id" value="{{post.id}}">

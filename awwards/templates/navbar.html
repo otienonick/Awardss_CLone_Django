@@ -1,4 +1,6 @@
-<div class="ui grid  inverted menu nav fixed mb-7">
+<div class="container-fluid">
+
+<div class="ui grid  inverted menu nav fixed mb-7 nav-bars">
     <div class="ui container">
       <a href="{% url 'home' %}" class="item">
           <h3>Awardzz</h3>
@@ -6,7 +8,7 @@
   
       <div class="right menu">
           {% if user.is_authenticated %}
-               <div class="item">
+               <div class="item search__bar">
                 <form action="{% url 'search_results' %}" role="search">
                   <div class="ui action left icon input">
                   <input class="prompt" type="text" name='project' placeholder="project name...">
@@ -16,19 +18,21 @@
               </form>
               </div>
           
-              <a href="{% url 'profile' %}" class="item">
+              <a href="{% url 'profile' %}" class="item nav-item">
                    {{ request.user }}<i class="user icon"></i>
               </a>
   
-              <a href="/logout" class="ui item">
+              <a href="/logout" class="ui item nav-item">
                   Logout
               </a>
           {% else %}
-          <a href="/accounts/login" class="ui item">
+          <a href="/accounts/login" class="ui item nav-item">
                   Login
               </a>
           {% endif %}
       </div>
     </div>
   </div>
+</div>
+
 
