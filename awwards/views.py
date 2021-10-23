@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from . models import Profile,Post,Like
 from .forms  import ProfileModelForm,PostModelForm
 from django.contrib.auth.decorators import login_required
+import datetime as dt
 
 
 
@@ -41,14 +42,15 @@ def my_profile_view(request):
 
 def home(request):
     posts = Post.objects.all()
-    # profile = Profile.objects.get(user =request.user)
+    date = dt.date.today()
+
     context = {
         'posts':posts,
-        # 'profile':profile,
+        'date':date
     }
 
     return render(request,'awwards/home.html',context)
-    
+
 @login_required(login_url='/accounts/login/')
 def reviewPhoto(request,pk):
     post = Post.objects.get(id = pk)
@@ -84,3 +86,20 @@ def like(request):
             
       
     return redirect('review',pk = post_id )
+
+def search_results(request):
+
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_articles = Post.search_by_project_name(search_term)
+        message = f"{search_term}"
+        context = {"message":message,
+        "projects": searched_articles}
+
+        return render(request, 'awwards/search.html',context)
+    else:
+        message = "no projects found"
+        context = {
+            'message':message
+        }
+        return render(request, 'awwards/home.html',context)      
