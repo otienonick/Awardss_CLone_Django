@@ -29,6 +29,12 @@ class Post(models.Model):
 
     def __str__(self):
         return str(self.description[:20])
+        
+    @classmethod
+    def search_by_project_name(cls,search_term):
+        project = cls.objects.filter(project_name__icontains = search_term)   
+        # We filter the model data using the __icontains query filter
+        return project     
 
     class Meta:
         ordering = ['-created'] 
