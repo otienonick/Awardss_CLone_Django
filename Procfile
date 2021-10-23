@@ -1,1 +1,1 @@
-web: gunicorn your_project_name.awardss_clone --log-file -
+web: gunicorn awardss_clone --log-file -
