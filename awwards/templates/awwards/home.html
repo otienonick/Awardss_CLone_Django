@@ -3,15 +3,18 @@
 
 {% block title%}HOME{% endblock%}
 {% block content%}
+<div class="ui grid melody">
+</div>
+<h3 class='text-white mag' >Site of the Day <span class="fs-5">{{date|date:"l d-F Y"}}</span> </h3>        
 
-            <div class="container">      
-        <div class="ui center aligned basic segment">
+        <div class="container mt-5">  
+            <div class="ui center aligned basic segment">
 
-            <div class="ui horizontal divider">
-                WELCOME
-                </div>
-                </div>
-            
+                <div class="ui horizontal divider">
+                    WELCOME
+                    </div>
+                    </div>    
+
     <div class="row">
         {% for post in posts %}
         <div class="col-md-6 col-lg-4 col-12 col-sm-12">

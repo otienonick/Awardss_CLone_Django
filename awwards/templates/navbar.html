@@ -1,4 +1,4 @@
-<div class="ui grid  inverted menu nav mb-7">
+<div class="ui grid  inverted menu nav fixed mb-7">
     <div class="ui container">
       <a href="{% url 'home' %}" class="item">
           <h3>Awardzz</h3>
@@ -7,9 +7,9 @@
       <div class="right menu">
           {% if user.is_authenticated %}
                <div class="item">
-                <form action="" method="GET">
+                <form action="{% url 'search_results' %}" role="search">
                   <div class="ui action left icon input">
-                  <input class="prompt" type="text" name='q' placeholder="project name...">
+                  <input class="prompt" type="text" name='project' placeholder="project name...">
                   <i class="search icon"></i>
                   <button type='submit' class="ui button">Search</button>
                   </div>

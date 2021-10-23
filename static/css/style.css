@@ -4,6 +4,7 @@ body{
 
 .nav{
     border-radius: 0 !important;
+    background: #000 !important;
     
 }
 
@@ -87,4 +88,17 @@ body{
     text-decoration: none;
     color: #000;
 
+}
+
+.melody{
+background-image: url('../photosss/galeria.png');
+height: 700px;
+background-position: center;
+background-size: cover;
+filter: brightness(50%);
+position: relative;
+}
+.mag{
+    position: absolute;
+    top: 12%;
 }
